@@ -8,19 +8,36 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "eslintConfig": {
+    "extends": ["next/core-web-vitals", "next/typescript"]
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "jsxSingleQuote": true,
+    "trailingComma": "none",
+    "plugins": ["prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
+    "organizeImportsSkipDestructiveCodeActions": true,
+    "tailwindConfig": "./tailwind.config.ts",
+    "tailwindFunctions": ["clsx", "tw"]
+  },
   "dependencies": {
+    "next": "15.0.0-canary.88",
+    "prettier-plugin-organize-imports": "^4.0.0",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "react": "19.0.0-rc.0",
-    "react-dom": "19.0.0-rc.0",
-    "next": "15.0.0-canary.88"
+    "react-dom": "19.0.0-rc.0"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^8",
-    "eslint-config-next": "15.0.0-canary.88"
+    "eslint-config-next": "15.0.0-canary.88",
+    "postcss": "^8",
+    "prettier": "3.3.3",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
