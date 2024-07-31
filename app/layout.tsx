@@ -12,8 +12,10 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
+  auth,
   children
 }: Readonly<{
+  auth: React.ReactNode
   children: React.ReactNode
 }>) {
   return (
@@ -24,6 +26,7 @@ export default function RootLayout({
         <div className='sticky top-0 z-20'>
           <Header />
         </div>
+        {auth}
         {children}
       </body>
     </html>

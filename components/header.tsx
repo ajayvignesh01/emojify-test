@@ -21,6 +21,7 @@ import {
   UserRoundIcon
 } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function Header() {
   const recents = [
@@ -57,7 +58,9 @@ export function Header() {
     <header className='flex w-full flex-col gap-3 bg-white/95 p-3 backdrop-blur supports-[backdrop-filter]:bg-white/60 md:h-16 md:flex-row md:items-center lg:px-4'>
       <div className='flex w-full items-center gap-8'>
         {/* Logo */}
-        <EmojifyLogo />
+        <Link href='/'>
+          <EmojifyLogo />
+        </Link>
 
         {/*  */}
         <div className='ml-auto flex items-center gap-2 sm:gap-4'>
@@ -65,7 +68,7 @@ export function Header() {
             Feedback
           </Button>
           <DropdownMenu>
-            <DropdownMenuTrigger className='size-8 cursor-pointer' asChild>
+            <DropdownMenuTrigger className='size-8 cursor-pointer select-none' asChild>
               <Avatar>
                 <AvatarImage src='https://vercel.com/api/www/avatar/YUl2lbZ0xz8gEqG79FbF5ytX?s=64' alt='avatar' />
                 <AvatarFallback>AS</AvatarFallback>
@@ -115,6 +118,17 @@ export function Header() {
                   </DropdownMenuItem>
                 ))}
                 <DropdownMenuItem className='justify-center p-2 text-xs font-medium'>View All</DropdownMenuItem>
+              </DropdownMenuGroup>
+
+              <DropdownMenuSeparator className='my-0' />
+
+              <DropdownMenuGroup className='p-2'>
+                <Link href={'/login'}>
+                  <DropdownMenuItem className='gap-3 py-2.5'>
+                    <UserRoundIcon className='size-4' />
+                    <span>Login</span>
+                  </DropdownMenuItem>
+                </Link>
               </DropdownMenuGroup>
 
               <DropdownMenuSeparator className='my-0' />
