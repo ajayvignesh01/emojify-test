@@ -1,3 +1,4 @@
+import { Header } from '@/components/header'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
@@ -15,7 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>{children}</body>
+      <body className={`${GeistSans.variable} ${GeistMono.variable} min-h-screen font-sans antialiased`}>
+        <div className='sticky top-0 z-20'>
+          <Header />
+        </div>
+        {children}
+      </body>
     </html>
   )
 }
