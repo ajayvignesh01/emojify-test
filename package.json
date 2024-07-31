@@ -10,7 +10,7 @@
     "generate-types": "bunx supabase gen types typescript --project-id nybqsghqmujmqwybvkoh --schema public > lib/utils/supabase/database.types.ts"
   },
   "eslintConfig": {
-    "extends": ["next/core-web-vitals", "next/typescript"]
+    "extends": ["next/core-web-vitals"]
   },
   "prettier": {
     "printWidth": 120,
