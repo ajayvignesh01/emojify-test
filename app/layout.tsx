@@ -1,4 +1,6 @@
 import { Header } from '@/components/header'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
@@ -17,6 +19,8 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${GeistSans.variable} ${GeistMono.variable} min-h-screen font-sans antialiased`}>
+        <Analytics />
+        <SpeedInsights />
         <div className='sticky top-0 z-20'>
           <Header />
         </div>
