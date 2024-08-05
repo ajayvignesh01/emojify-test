@@ -24,3 +24,15 @@ export const getDomain = (input: string = '') => {
 
   return domain + input
 }
+
+export function getInitials(fullName: string) {
+  if (!fullName) return ''
+
+  const names = fullName.trim().split(' ')
+  return names.reduce((acc, curr, index) => {
+    if (index === 0 || index === names.length - 1) {
+      acc += curr.charAt(0).toUpperCase()
+    }
+    return acc
+  }, '')
+}

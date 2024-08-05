@@ -1,10 +1,28 @@
 'use client'
 
-import { LoginCard } from '@/components/login-card'
+import { login } from '@/app/login/actions'
+import { SignInWithGoogle } from '@/app/login/components/login-with-google'
+import { EmojifyLogo } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent } from '@/components/ui/dialog'
-import { Drawer, DrawerClose, DrawerContent, DrawerFooter } from '@/components/ui/drawer'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle
+} from '@/components/ui/dialog'
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle
+} from '@/components/ui/drawer'
 import { useMediaQuery } from '@/lib/hooks'
+import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 export default function Login() {
@@ -13,24 +31,65 @@ export default function Login() {
 
   if (isDesktop) {
     return (
-      <Dialog open={true} onOpenChange={(open) => router.back()}>
+      <Dialog open={true} onOpenChange={(_open) => router.back()}>
         <DialogContent className='overflow-hidden p-0 sm:max-w-md'>
-          <LoginCard className='mx-0 rounded-none border-none shadow-none' />
+          <DialogHeader>
+            <DialogTitle className='text-center text-3xl'>
+              <EmojifyLogo className='m-4 mx-auto size-12' />
+              Emojify
+            </DialogTitle>
+            <DialogDescription className='text-center'>
+              <span className='text-accent-foreground'>Generate emojis from text or photos using AI.</span>
+              <br />
+              <span>
+                <Link className='underline underline-offset-4 hover:text-primary' href='/terms'>
+                  Terms of Service
+                </Link>
+                {' and '}
+                <Link className='underline underline-offset-4 hover:text-primary' href='/privacy'>
+                  Privacy Policy
+                </Link>
+                .
+              </span>
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className='bg-accent p-4'>
+            <form action={login} className='w-full'>
+              <SignInWithGoogle />
+            </form>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     )
   }
 
   return (
-    <Drawer open={true} onOpenChange={(open) => router.back} onClose={() => router.back()}>
+    <Drawer open={true} onOpenChange={(_open) => router.back()} onClose={() => router.back()}>
       <DrawerContent className='overflow-hidden'>
-        <LoginCard
-          className={{
-            Card: 'mx-0 rounded-none border-none shadow-none sm:max-w-full',
-            CardFooter: 'px-4'
-          }}
-        />
-        <DrawerFooter className='bg-accent pt-2'>
+        <DrawerHeader>
+          <DrawerTitle className='text-center text-3xl'>
+            <EmojifyLogo className='m-4 mx-auto size-12' />
+            Emojify
+          </DrawerTitle>
+          <DrawerDescription className='text-center'>
+            <span className='text-accent-foreground'>Generate emojis from text or photos using AI.</span>
+            <br />
+            <span>
+              <Link className='underline underline-offset-4 hover:text-primary' href='/terms'>
+                Terms of Service
+              </Link>
+              {' and '}
+              <Link className='underline underline-offset-4 hover:text-primary' href='/privacy'>
+                Privacy Policy
+              </Link>
+              .
+            </span>
+          </DrawerDescription>
+        </DrawerHeader>
+        <DrawerFooter className='bg-accent p-4'>
+          <form action={login} className='w-full'>
+            <SignInWithGoogle />
+          </form>
           <DrawerClose asChild>
             <Button onClick={() => router.back()} variant='outline'>
               Cancel
